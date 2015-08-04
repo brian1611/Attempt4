@@ -60,8 +60,8 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
     boolean connection = false;
 
-    String deviceID = "53ff71066667574857452367";
-    String token = "a076afbb8dac01d59f7aa8d2561d7fdc2b394a6b";
+    String deviceID = "Nope!";
+    String token = "Not gonna tell you";
     String base = "https://api.particle.io/v1/devices/";
     String SSEcall = "/events/?access_token=";
     TextView progress, txtDisplay1, txtDisplay2;
