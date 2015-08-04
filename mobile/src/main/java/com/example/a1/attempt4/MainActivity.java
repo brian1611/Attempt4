@@ -306,7 +306,7 @@ try {
 
                 try {
                     data = URLEncoder.encode("access_token", "UTF-8")
-                            + "=" + URLEncoder.encode("a076afbb8dac01d59f7aa8d2561d7fdc2b394a6b", "UTF-8");
+                            + "=" + URLEncoder.encode("blahblah", "UTF-8");
                     data += "&" + URLEncoder.encode("params", "UTF-8") + "="
                             + URLEncoder.encode(s[1], "UTF-8");
                 } catch (UnsupportedEncodingException e) {
@@ -318,7 +318,7 @@ try {
                 try
                 {
                     // Defined URL  where to send data
-                    URL url = new URL("https://api.particle.io/v1/devices/53ff71066667574857452367/"+s[0]);
+                    URL url = new URL("blahblahblah"+s[0]);
 
                     // Send POST data request
 
