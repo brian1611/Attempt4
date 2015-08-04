@@ -3,7 +3,7 @@ package com.example.a1.attempt4;
 import com.loopj.android.http.*;
 
 public class RestClient {
-    private static final String BASE_URL = "https://api.particle.io/v1/devices/53ff71066667574857452367/";
+    private static final String BASE_URL = "https://api.particle.io/v1/devices/blah/";
 
     private static AsyncHttpClient client = new AsyncHttpClient(false, 80, 443);
 
@@ -17,6 +17,6 @@ public class RestClient {
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {
-        return BASE_URL + relativeUrl + "?access_token=a076afbb8dac01d59f7aa8d2561d7fdc2b394a6b";
+        return BASE_URL + relativeUrl + "?access_token=blah?";
     }
 }
