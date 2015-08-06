@@ -60,8 +60,8 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
     boolean connection = false;
 
-    String deviceID = "53ff71066667574857452367";
-    String token = "a076afbb8dac01d59f7aa8d2561d7fdc2b394a6b";
+    String deviceID = CoreData.deviceID;
+    String token = CoreData.token;
     String base = "https://api.particle.io/v1/devices/";
     String SSEcall = "/events/?access_token=";
     TextView progress, txtDisplay1, txtDisplay2;
@@ -306,7 +306,7 @@ try {
 
                 try {
                     data = URLEncoder.encode("access_token", "UTF-8")
-                            + "=" + URLEncoder.encode("a076afbb8dac01d59f7aa8d2561d7fdc2b394a6b", "UTF-8");
+                            + "=" + URLEncoder.encode(CoreData.token, "UTF-8");
                     data += "&" + URLEncoder.encode("params", "UTF-8") + "="
                             + URLEncoder.encode(s[1], "UTF-8");
                 } catch (UnsupportedEncodingException e) {
@@ -318,7 +318,7 @@ try {
                 try
                 {
                     // Defined URL  where to send data
-                    URL url = new URL("https://api.particle.io/v1/devices/53ff71066667574857452367/"+s[0]);
+                    URL url = new URL("https://api.particle.io/v1/devices/"+CoreData.deviceID+"/"+s[0]);
 
                     // Send POST data request
 
@@ -344,23 +344,7 @@ try {
 
 
                     text = sb.toString();
-//try {
-//    JSONObject json = new JSONObject(text);
-//
-//    Object ob = json.get("return_value");
-//
-//    if (ob != null) {
-//        String parsed2 = ob.toString();
-//       // txtDisplay2.setText(parsed2);
-//        sendMessage(WEAR_MESSAGE_PATH, parsed2);
-//    }
-//
-//}
-//catch (JSONException e){
-//    Log.d(TAG, "Json error" + text);
-//}
-//
-               //    sendMessage(WEAR_MESSAGE_PATH,text);
+
                     Log.d(TAG, "result text " + text);
                 }
 
