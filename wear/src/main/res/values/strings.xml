@@ -2,4 +2,25 @@
     <string name="app_name">Attempt4</string>
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>
+
+    <string-array name="pin_num">
+        <item>D0</item>
+        <item>D1</item>
+        <item>A0</item>
+        <item>A1</item>
+        <item>A4</item>
+        <item>A5</item>
+        <item>A6</item>
+    </string-array>
+    <string-array name="function">
+        <item>POST</item>
+        <item>PROX</item>
+        <item>SET</item>
+    </string-array>
+    <string-array name="choice">
+        <item>Read</item>
+        <item>Write</item>
+    </string-array>
+
+
 </resources>
