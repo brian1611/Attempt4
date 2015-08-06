@@ -6,8 +6,11 @@ import android.support.wearable.view.WatchViewStub;
 import android.os.AsyncTask;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -57,6 +60,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.content.IntentFilter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.widget.Toast;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -65,10 +69,12 @@ public class MainActivity extends Activity implements MessageApi.MessageListener
 
     private static final String TAG = "MainActivity";
     private TextView txtDisplay1;
+    private TextView txtDisplay2;
     private Button sendbut;
     private Button testbut;
     ImageView image;
     ImageView image2;
+
     //phone to watch
     private static final String START_ACTIVITY = "/start_activity";
     private static final String WEAR_MESSAGE_PATH = "/message";
@@ -77,10 +83,14 @@ public class MainActivity extends Activity implements MessageApi.MessageListener
     private static final String WEAR_MESSAGE_PATH2 = "/message2";
     private GoogleApiClient mGoogleApiClient;
     private GoogleApiClient mGoogleApiClient2;
+
+    private Spinner spinner, spinner1, spinner2, spinner3;
+    private SeekBar seek1;
     String dir = "idle";
     String band = "mid";
+    String temp = null;
     ///////
-    ApiFacade api;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,31 +107,130 @@ public class MainActivity extends Activity implements MessageApi.MessageListener
 
             }
         });
-        api = ApiFacade.getInstance(this);
+
     }
 private void init(){
     txtDisplay1 = (TextView)findViewById(R.id.textView);
+    txtDisplay2 = (TextView)findViewById(R.id.textView2);
     sendbut = (Button) findViewById(R.id.connect);
     testbut = (Button) findViewById(R.id.button);
     image = (ImageView) findViewById(R.id.imageView);
     image2 = (ImageView) findViewById(R.id.imageView2);
+    spinner = (Spinner) findViewById(R.id.spinner);
+    spinner1 = (Spinner) findViewById(R.id.spinner1);
+    spinner2 = (Spinner) findViewById(R.id.spinner2);
+    spinner3 = (Spinner) findViewById(R.id.spinner3);
+    seek1 = (SeekBar) findViewById(R.id.seekBar);
+
+
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
    sendbut.setOnClickListener(new Button.OnClickListener() {
        @Override
        public void onClick(View arg0) {
-          // image.setImageResource(R.drawable.idle);
-           sendMessage(WEAR_MESSAGE_PATH2, "POST on");
+           // image.setImageResource(R.drawable.idle);
+           CharSequence c = txtDisplay2.getText();
+           if (temp != null) {
+               sendMessage(WEAR_MESSAGE_PATH2, temp);
+           }
        }
    });
     testbut.setOnClickListener(new Button.OnClickListener() {
         @Override
         public void onClick(View arg0) {
-
-            sendMessage(WEAR_MESSAGE_PATH2, "POST off");
+            temp = null;
+            txtDisplay2.setText("");
         }
     });
+
+    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                   int arg2, long arg3) {
+            // TODO Auto-generated method stub
+//            Toast.makeText(getBaseContext(), spinner.getSelectedItem().toString(),
+//                    Toast.LENGTH_SHORT).show();
+            txtDisplay2.append(spinner.getSelectedItem().toString());
+            temp = temp + spinner.getSelectedItem().toString();
+        }
+
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+    });
+    spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                   int arg2, long arg3) {
+            // TODO Auto-generated method stub
+            txtDisplay2.append(spinner1.getSelectedItem().toString());
+            temp = temp +spinner1.getSelectedItem().toString();
+        }
+
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+    });
+    spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                   int arg2, long arg3) {
+            // TODO Auto-generated method stub
+            txtDisplay2.setText(spinner2.getSelectedItem().toString() + " ");
+            temp = spinner2.getSelectedItem().toString() + " ";
+        }
+
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+    });
+    spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                   int arg2, long arg3) {
+            // TODO Auto-generated method stub
+            char m;
+            txtDisplay2.append(spinner3.getSelectedItem().toString());
+
+            if(spinner3.getSelectedItem().toString().equals("Read")){
+                m ='r';
+            }else{m='w';}
+            temp += m;
+        }
+
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+    });
+    seek1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        int progress = 0;
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser) {
+            progress = progressValue;
+            txtDisplay1.setText(String.valueOf(progress));
+
+        }
+        @Override
+
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            txtDisplay2.append(String.valueOf(progress));
+            temp += String.valueOf(progress);
+        }
+
+
+    });
+
 }
+
+
     private void initGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder( this )
                 .addApi( Wearable.API )
