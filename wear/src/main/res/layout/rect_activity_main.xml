@@ -11,6 +11,7 @@
 
 
 
+
     >
 
 <RelativeLayout
@@ -24,9 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Console"
-    android:layout_below="@+id/listView"
-        android:id="@+id/textView" />
-
+    android:id="@+id/textView"
+    android:layout_below="@+id/textView2" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Functions and pin options"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/seekBar" />
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -37,9 +43,11 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ready"
+        android:text="function"
+        android:background="@color/dark_blue"
         android:id="@+id/connect"
-        android:layout_below="@id/imageView" />
+        android:layout_below="@id/imageView"
+        android:layout_alignEnd="@+id/imageView2" />
 
     <ImageView
         android:layout_width="50dp"
@@ -51,20 +59,52 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Clear"
+        android:background="@color/dark_blue"
         android:id="@+id/button"
         android:layout_below="@+id/connect"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/connect" />
+        android:layout_toStartOf="@+id/spinner1" />
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
+    <Spinner
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/spinner"
+        android:entries="@array/pin_num"
         android:layout_below="@+id/button"
-        android:layout_alignParentEnd="true"
-        tools:listitem="@android:layout/simple_expandable_list_item_1" />
+        android:layout_alignParentStart="true" />
+    <Spinner
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner1"
+        android:entries="@array/pin_num"
+        android:layout_above="@+id/spinner2"
+        android:layout_centerHorizontal="true" />
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
+        android:entries="@array/function"
 
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner3"
+        android:entries="@array/choice"
+
+        android:layout_below="@+id/button"
+        android:layout_alignParentEnd="true" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_below="@+id/spinner2"
+        android:background="@color/semitransparent_grey"
+        android:max="255" />
 
 </RelativeLayout>
     </ScrollView>
