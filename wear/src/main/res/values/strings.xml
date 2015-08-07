@@ -4,6 +4,7 @@
     <string name="hello_square">Hello Square World!</string>
 
     <string-array name="pin_num">
+        <item></item>
         <item>D0</item>
         <item>D1</item>
         <item>A0</item>
@@ -13,11 +14,13 @@
         <item>A6</item>
     </string-array>
     <string-array name="function">
+        <item></item>
         <item>POST</item>
         <item>PROX</item>
         <item>SET</item>
     </string-array>
     <string-array name="choice">
+        <item></item>
         <item>Read</item>
         <item>Write</item>
     </string-array>
