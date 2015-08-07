@@ -316,29 +316,21 @@ try {
                 BufferedReader reader=null;
 
                 try
-                {
-                    // Defined URL  where to send data
+                {// Defined URL  where to send data
                     URL url = new URL("https://api.particle.io/v1/devices/"+CoreData.deviceID+"/"+s[0]);
-
                     // Send POST data request
-
                     URLConnection conn = url.openConnection();
                     conn.setDoOutput(true);
                     OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
                     wr.write( data );
                     wr.flush();
-
                     // Get the server response
-
                     reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuilder sb = new StringBuilder();
                     String line = null;
-
                     // Read Server Response
                     while((line = reader.readLine()) != null)
-                    {
-
-                        // Append server response in string
+                    {// Append server response in string
                         sb.append(line + "\n");
                     }
 
@@ -356,7 +348,6 @@ try {
                 {
                     try
                     {
-
                         reader.close();
                     }
 
@@ -364,8 +355,6 @@ try {
                         Log.d(TAG, "reader close exception: " + ex.getMessage(), ex);
                     }
                 }
-                Log.d(TAG, "result text 2" + text);
-
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run(){ }
