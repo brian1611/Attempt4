@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
 import android.os.AsyncTask;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -89,6 +90,7 @@ public class MainActivity extends Activity implements MessageApi.MessageListener
     String dir = "idle";
     String band = "mid";
     String temp = null;
+    int seekvalue = 0;
     ///////
 
 
@@ -129,10 +131,24 @@ private void init(){
        @Override
        public void onClick(View arg0) {
            // image.setImageResource(R.drawable.idle);
-           CharSequence c = txtDisplay2.getText();
-           if (temp != null) {
-               sendMessage(WEAR_MESSAGE_PATH2, temp);
+           //CharSequence c = txtDisplay2.getText();
+           String p1 = spinner2.getSelectedItem().toString();
+           String p2 = spinner.getSelectedItem().toString();
+           String p3 = spinner1.getSelectedItem().toString();
+           String merge = p1+" "+p2;
+           if(p1.equals("PROX")){
+               merge+= p3;
            }
+           if(temp=="r" ||temp =="w"){
+               merge += temp;
+           }
+           if(temp =="w"){
+               merge += String.valueOf(seekvalue);
+           }
+
+               sendMessage(WEAR_MESSAGE_PATH2, merge);
+           txtDisplay2.setText(merge);
+
        }
    });
     testbut.setOnClickListener(new Button.OnClickListener() {
@@ -150,8 +166,8 @@ private void init(){
             // TODO Auto-generated method stub
 //            Toast.makeText(getBaseContext(), spinner.getSelectedItem().toString(),
 //                    Toast.LENGTH_SHORT).show();
-            txtDisplay2.append(spinner.getSelectedItem().toString());
-            temp = temp + spinner.getSelectedItem().toString();
+          //  txtDisplay2.append(spinner.getSelectedItem().toString());
+            //   temp = temp + spinner.getSelectedItem().toString();
         }
 
         public void onNothingSelected(AdapterView<?> arg0) {
@@ -164,8 +180,8 @@ private void init(){
         public void onItemSelected(AdapterView<?> arg0, View arg1,
                                    int arg2, long arg3) {
             // TODO Auto-generated method stub
-            txtDisplay2.append(spinner1.getSelectedItem().toString());
-            temp = temp +spinner1.getSelectedItem().toString();
+        //    txtDisplay2.append(spinner1.getSelectedItem().toString());
+           // temp = temp +spinner1.getSelectedItem().toString();
         }
 
         public void onNothingSelected(AdapterView<?> arg0) {
@@ -178,8 +194,8 @@ private void init(){
         public void onItemSelected(AdapterView<?> arg0, View arg1,
                                    int arg2, long arg3) {
             // TODO Auto-generated method stub
-            txtDisplay2.setText(spinner2.getSelectedItem().toString() + " ");
-            temp = spinner2.getSelectedItem().toString() + " ";
+      //      txtDisplay2.setText(spinner2.getSelectedItem().toString() + " ");
+      //      temp = spinner2.getSelectedItem().toString() + " ";
         }
 
         public void onNothingSelected(AdapterView<?> arg0) {
@@ -192,13 +208,14 @@ private void init(){
         public void onItemSelected(AdapterView<?> arg0, View arg1,
                                    int arg2, long arg3) {
             // TODO Auto-generated method stub
-            char m;
-            txtDisplay2.append(spinner3.getSelectedItem().toString());
+            String m;
+          //  txtDisplay2.append(spinner3.getSelectedItem().toString());
 
             if(spinner3.getSelectedItem().toString().equals("Read")){
-                m ='r';
-            }else{m='w';}
-            temp += m;
+                m ="r";
+            }else if (spinner3.getSelectedItem().toString().equals("Write")){m="w";}
+            else{m = "";}
+            temp = m;
         }
 
         public void onNothingSelected(AdapterView<?> arg0) {
@@ -221,8 +238,8 @@ private void init(){
         }
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-            txtDisplay2.append(String.valueOf(progress));
-            temp += String.valueOf(progress);
+        //    txtDisplay2.append(String.valueOf(progress));
+            seekvalue= progress;
         }
 
 
