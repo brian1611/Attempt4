@@ -2,6 +2,7 @@ package com.example.a1.attempt4;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.wearable.view.WatchViewStub;
 import android.os.AsyncTask;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 
@@ -73,6 +75,7 @@ public class MainActivity extends Activity implements MessageApi.MessageListener
     private TextView txtDisplay2;
     private Button sendbut;
     private Button testbut;
+    private Switch mySwitch;
     ImageView image;
     ImageView image2;
 
@@ -91,6 +94,8 @@ public class MainActivity extends Activity implements MessageApi.MessageListener
     String band = "mid";
     String temp = null;
     int seekvalue = 0;
+    String merge;
+    private Handler handler;
     ///////
 
 
@@ -123,7 +128,9 @@ private void init(){
     spinner2 = (Spinner) findViewById(R.id.spinner2);
     spinner3 = (Spinner) findViewById(R.id.spinner3);
     seek1 = (SeekBar) findViewById(R.id.seekBar);
-
+    mySwitch = (Switch) findViewById(R.id.switch1);
+    mySwitch.setChecked(false);
+    handler = new Handler();
 
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -135,20 +142,26 @@ private void init(){
            String p1 = spinner2.getSelectedItem().toString();
            String p2 = spinner.getSelectedItem().toString();
            String p3 = spinner1.getSelectedItem().toString();
-           String merge = p1+" "+p2;
-           if(p1.equals("PROX")){
-               merge+= p3;
+           merge = p1 + " " + p2;
+           if (p1.equals("PROX")) {
+               merge += p3;
            }
-           if(temp=="r" ||temp =="w"){
+           if (temp == "r" || temp == "w") {
                merge += temp;
            }
-           if(temp =="w"){
+           if (temp == "w") {
                merge += String.valueOf(seekvalue);
            }
 
-               sendMessage(WEAR_MESSAGE_PATH2, merge);
            txtDisplay2.setText(merge);
+           if (p2.charAt(0) == 'A' || p2.charAt(0) == 'D') {
 
+               sendMessage(WEAR_MESSAGE_PATH2, merge);
+               if(mySwitch.isChecked()) {
+                   handler.postDelayed(runnable, 1000);
+               }
+
+           }
        }
    });
     testbut.setOnClickListener(new Button.OnClickListener() {
@@ -166,7 +179,7 @@ private void init(){
             // TODO Auto-generated method stub
 //            Toast.makeText(getBaseContext(), spinner.getSelectedItem().toString(),
 //                    Toast.LENGTH_SHORT).show();
-          //  txtDisplay2.append(spinner.getSelectedItem().toString());
+            //  txtDisplay2.append(spinner.getSelectedItem().toString());
             //   temp = temp + spinner.getSelectedItem().toString();
         }
 
@@ -246,7 +259,18 @@ private void init(){
     });
 
 }
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+      /* do what you need to do */
+            sendMessage(WEAR_MESSAGE_PATH2, merge);
 
+      /* and here comes the "trick" */
+            if(mySwitch.isChecked()) {
+                handler.postDelayed(this, 1000);
+            }
+        }
+    };
 
     private void initGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder( this )
