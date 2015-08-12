@@ -84,7 +84,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     @Override
     public void onConnected(Bundle bundle) {
         Wearable.MessageApi.addListener(mGoogleApiClient, this);
-        sendMessage(START_ACTIVITY, "");
+        //sendMessage(START_ACTIVITY, "");
 
     }
 
@@ -336,6 +336,12 @@ try {
 
 
                     text = sb.toString();
+                    JSONObject j = new JSONObject(text);
+                 int k = j.getInt("return_value");
+                    sendMessage(WEAR_MESSAGE_PATH, "response: "+String.valueOf(k)+"/4095");
+
+
+
 
                     Log.d(TAG, "result text " + text);
                 }
