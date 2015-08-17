@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="D0"
+            android:id="@+id/d0r"
+            android:layout_below="@+id/a7r"
+            android:layout_alignParentEnd="true" />
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="A0"
+            android:id="@+id/a0r"
+            android:layout_below="@+id/a1r"
+            android:layout_alignParentEnd="true" />
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="A1"
+            android:id="@+id/a1r"
+            android:layout_below="@+id/d0r"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="A4"
+            android:id="@+id/a4r"
+            android:layout_below="@+id/a5r"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="A5"
+            android:id="@+id/a5r"
+            android:layout_below="@+id/a6r"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="A6"
+            android:id="@+id/a6r"
+
+            android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="A7"
+            android:id="@+id/a7r"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a7"
+            android:id="@+id/a7rvalue"
+            android:layout_alignBaseline="@+id/a7r"
+            android:layout_alignBottom="@+id/a7r"
+            android:layout_toStartOf="@+id/a7r" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a6"
+            android:id="@+id/a6rvalue"
+            android:layout_alignBaseline="@+id/a6r"
+            android:layout_alignBottom="@+id/a6r"
+            android:layout_toEndOf="@+id/a6r" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a5"
+            android:id="@+id/a5rvalue"
+            android:layout_below="@+id/a6r"
+            android:layout_toEndOf="@+id/a5r"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a4"
+            android:id="@+id/a4rvalue"
+            android:layout_alignBaseline="@+id/a4r"
+            android:layout_alignBottom="@+id/a4r"
+            android:layout_toEndOf="@+id/a4r" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="d0"
+            android:id="@+id/d0rvalue"
+            android:layout_alignTop="@+id/a5rvalue"
+            android:layout_toStartOf="@+id/d0r" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a1"
+            android:id="@+id/a1rvalue"
+            android:layout_alignBaseline="@+id/a1r"
+            android:layout_alignBottom="@+id/a1r"
+            android:layout_toStartOf="@+id/a1r" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a0"
+            android:id="@+id/a0rvalue"
+            android:layout_below="@+id/a1r"
+            android:layout_toStartOf="@+id/a0r"
+            android:layout_marginTop="14dp" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cycle"
+            android:id="@+id/sampling_switch"
+            android:layout_alignTop="@+id/a0rvalue"
+            android:layout_alignParentStart="true" />
+
+
+    </RelativeLayout>
+
+</ScrollView>
