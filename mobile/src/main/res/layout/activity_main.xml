@@ -48,5 +48,41 @@
         android:layout_alignParentTop="true"
       />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="demo1"
+        android:id="@+id/demo_1_button"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="demo2"
+        android:id="@+id/demo_2_button"
+        android:layout_below="@+id/demo_1_button"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pin Set"
+        android:id="@+id/pinset_button"
+        android:layout_below="@+id/demo_2_button"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sample"
+        android:id="@+id/sampling_button"
+        android:layout_below="@+id/pinset_button"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
 
 </RelativeLayout>
