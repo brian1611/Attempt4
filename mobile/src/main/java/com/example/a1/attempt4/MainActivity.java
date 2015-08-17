@@ -57,8 +57,10 @@ import android.util.Log;
 public class MainActivity extends Activity implements GoogleApiClient.ConnectionCallbacks, MessageApi.MessageListener{
     private static final String TAG = "MainActivity";
     private Button sseSwitch;
-
-    boolean connection = false;
+    private Button demo1;
+    private Button demo2;
+    private Button pinset;
+    private Button samples;
 
     String deviceID = CoreData.deviceID;
     String token = CoreData.token;
@@ -74,6 +76,8 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     //watch to phone
     private static final String START_ACTIVITY2 = "/start_activity2";
     private static final String WEAR_MESSAGE_PATH2 = "/message2";
+    private static final String START_ACTIVITY3 = "/start_activity3";
+    private static final String WEAR_MESSAGE_PATH3 = "/message3";
 
     private GoogleApiClient mGoogleApiClient;
     /////
@@ -84,7 +88,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     @Override
     public void onConnected(Bundle bundle) {
         Wearable.MessageApi.addListener(mGoogleApiClient, this);
-        //sendMessage(START_ACTIVITY, "");
+        sendMessage(START_ACTIVITY, "");
 
     }
 
@@ -114,6 +118,12 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
 
         sseSwitch = (Button) findViewById(R.id.connect);
+        demo1 = (Button) findViewById(R.id.demo_1_button);
+        demo2 = (Button) findViewById(R.id.demo_2_button);
+        pinset = (Button) findViewById(R.id.pinset_button);
+        samples = (Button) findViewById(R.id.sampling_button);
+
+
         txtDisplay1 = (TextView) findViewById(R.id.TextView1);
         txtDisplay2 = (TextView) findViewById(R.id.TextView2);
         image = (ImageView) findViewById(R.id.imageView);
@@ -121,19 +131,35 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
         sseSwitch.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                if (connection == false) {
-                    txtDisplay2.setText("button pressed");
-                    Con con = new Con();
-                    con.execute(base + deviceID + SSEcall + token);
-                    sseSwitch.setText("Connected");
-                    connection = true;
 
-                } else {
-                    DisCon discon = new DisCon();
-                    discon.execute();
-                    sseSwitch.setText("Disconnected");
-                    connection = false;
-                }
+                txtDisplay2.setText("button pressed");
+                Con con = new Con();
+                con.execute(base + deviceID + SSEcall + token);
+                sseSwitch.setText("Connected");
+            }
+        });
+        demo1.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                sendMessage(WEAR_MESSAGE_PATH, "demo1");
+            }
+        });
+        demo2.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                sendMessage(WEAR_MESSAGE_PATH, "demo2");
+            }
+        });
+        pinset.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                sendMessage(WEAR_MESSAGE_PATH, "pinset");
+            }
+        });
+        samples.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                sendMessage(WEAR_MESSAGE_PATH, "samples");
             }
         });
     }
@@ -260,22 +286,6 @@ try {
         }
     }
 
-    class DisCon extends AsyncTask<String,Void,Void> {
-        @Override
-        protected Void doInBackground(String... urls) {
-            try {
-                eventSource.close();
-            } catch (IOException e) {
-            }
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void feed) {
-        txtDisplay1.setText("Disconnected");
-        }
-
-    }
-
     private void sendMessage( final String path, final String text ) {
         new Thread( new Runnable() {
             @Override
@@ -338,14 +348,22 @@ try {
                     text = sb.toString();
                     JSONObject j = new JSONObject(text);
                  int k = j.getInt("return_value");
-                    sendMessage(WEAR_MESSAGE_PATH, "response: "+String.valueOf(k)+"/4095");
 
-
-
-
+                    String k_s = String.valueOf(k);
+                    String c = k_s.substring(0, 1);
+                    String tempt=null;
+                    switch(c){
+                        case "1":
+                            tempt = "D"+k_s.charAt(1);
+                            break;
+                        case "2":
+                            tempt = "A"+k_s.charAt(1);
+                            break;
+                    }
+                    tempt = tempt +k_s.substring(2);
+                    sendMessage(WEAR_MESSAGE_PATH, tempt);
                     Log.d(TAG, "result text " + text);
                 }
-
                 catch(Exception ex)
                 {
                     Log.d(TAG, "exception 1: " + ex.getMessage(), ex);
