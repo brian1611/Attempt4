@@ -76,8 +76,10 @@ public class MainActivity extends Activity implements MessageApi.MessageListener
     private Button sendbut;
     private Button testbut;
     private Switch mySwitch;
+    private String pagesw;
     ImageView image;
     ImageView image2;
+
 
     //phone to watch
     private static final String START_ACTIVITY = "/start_activity";
@@ -122,6 +124,7 @@ private void init(){
     sendbut = (Button) findViewById(R.id.connect);
     testbut = (Button) findViewById(R.id.button);
     image = (ImageView) findViewById(R.id.imageView);
+
     image2 = (ImageView) findViewById(R.id.imageView2);
     spinner = (Spinner) findViewById(R.id.spinner);
     spinner1 = (Spinner) findViewById(R.id.spinner1);
@@ -142,15 +145,27 @@ private void init(){
            String p1 = spinner2.getSelectedItem().toString();
            String p2 = spinner.getSelectedItem().toString();
            String p3 = spinner1.getSelectedItem().toString();
+           String rw = spinner3.getSelectedItem().toString();
+           String T=null;
+           int tint = seek1.getProgress();
+           switch (rw){
+               case"Read":
+                   T ="r";
+                   break;
+               case"Write":
+                   T = "w";
+                   break;
+           }
            merge = p1 + " " + p2;
+           ///////
            if (p1.equals("PROX")) {
                merge += p3;
            }
-           if (temp == "r" || temp == "w") {
-               merge += temp;
+           if (T == "r" || T == "w") {
+               merge += T;
            }
-           if (temp == "w") {
-               merge += String.valueOf(seekvalue);
+           if (T == "w") {
+               merge += tint;
            }
 
            txtDisplay2.setText(merge);
@@ -303,10 +318,12 @@ private void init(){
             case "DL":
                 dir = "left";
                 image.setImageResource(R.drawable.left);
+
                 break;
             case "DI":
                 dir = "idle";
                 image.setImageResource(R.drawable.idle);
+
                 break;
         }
     }
@@ -320,16 +337,47 @@ private void init(){
 
                     if (messageEvent.getData() != null) {
                         String in = new String(messageEvent.getData());
-                        txtDisplay1.setText(in);
+                        pagesw = in;
+
                         ////////////
                         if(in.charAt(0)=='D' || in.charAt(0)=='B' ) {
                             drawing(in);
                         }
+                            txtDisplay1.setText(in);
+
                         ////////////
                     }
                 }
+                switch (pagesw){
+                   // setContentView(R.layout.demo1);
+                    //image = (ImageView)findViewById(R.id.imageView3);
+
+                    case "demo1":
+                        Log.d(TAG,"before intent");
+                        Intent   intent = new Intent( MainActivity.this, Demo_1.class);
+                        startActivity(intent);
+                        break;
+                    case "demo2":
+                        Log.d(TAG, "before intent");
+                        Intent intent2 = new Intent( MainActivity.this, Demo_2.class);
+                        startActivity(intent2);
+                        break;
+                    case "pinset":
+                        Log.d(TAG, "before intent");
+                        Intent intent3 = new Intent( MainActivity.this, PinSet.class);
+                        startActivity(intent3);
+                        break;
+                    case "samples":
+                        Log.d(TAG, "before intent");
+                        Intent intent4 = new Intent( MainActivity.this, Sampling.class);
+                        startActivity(intent4);
+                        break;
+                }
             }
         });
+
+
+
     }
     @Override
     protected void onResume() {
@@ -346,7 +394,7 @@ private void init(){
     public void onConnected(Bundle bundle) {
         Wearable.MessageApi.addListener(mGoogleApiClient, this);
 
-            sendMessage(START_ACTIVITY, "");
+          //  sendMessage(START_ACTIVITY, "");
 
 
     }
