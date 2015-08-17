@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="D0"
+        android:id="@+id/d0"
+        android:layout_below="@+id/a7"
+        android:layout_alignParentEnd="true" />
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="A0"
+        android:id="@+id/a0"
+        android:layout_below="@+id/a1"
+        android:layout_alignParentEnd="true" />
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="A1"
+        android:id="@+id/a1"
+        android:layout_below="@+id/d0"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="A4"
+        android:id="@+id/a4"
+        android:layout_below="@+id/a5"
+        android:layout_alignParentStart="true" />
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="A5"
+        android:id="@+id/a5"
+        android:layout_below="@+id/a6"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="A6"
+        android:id="@+id/a6"
+
+        android:layout_alignParentStart="true" />
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="A7"
+        android:id="@+id/a7"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a7"
+            android:id="@+id/a7value"
+            android:layout_alignBaseline="@+id/a7"
+            android:layout_alignBottom="@+id/a7"
+            android:layout_toStartOf="@+id/a7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a6"
+            android:id="@+id/a6value"
+            android:layout_alignBaseline="@+id/a6"
+            android:layout_alignBottom="@+id/a6"
+            android:layout_toEndOf="@+id/a6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="a5"
+        android:id="@+id/a5value"
+        android:layout_below="@+id/a6"
+        android:layout_toEndOf="@+id/a5"
+        android:layout_marginTop="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="a4"
+        android:id="@+id/a4value"
+        android:layout_alignBaseline="@+id/a4"
+        android:layout_alignBottom="@+id/a4"
+        android:layout_toEndOf="@+id/a4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="d0"
+        android:id="@+id/d0value"
+        android:layout_alignTop="@+id/a5value"
+        android:layout_toStartOf="@+id/d0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="a1"
+        android:id="@+id/a1value"
+        android:layout_alignBaseline="@+id/a1"
+        android:layout_alignBottom="@+id/a1"
+        android:layout_toStartOf="@+id/a1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="a0"
+        android:id="@+id/a0value"
+        android:layout_below="@+id/a1"
+        android:layout_toStartOf="@+id/a0"
+        android:layout_marginTop="14dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekbar_s"
+        android:layout_below="@+id/a4"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/d0value"
+        android:max="255"
+        android:progress="0"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/255"
+        android:id="@+id/s_value"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/a4" />
+
+
+</RelativeLayout>
+
+    </ScrollView>
