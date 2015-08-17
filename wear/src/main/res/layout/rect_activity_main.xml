@@ -7,12 +7,7 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity"
     tools:deviceIds="wear_square"
-    android:weightSum="1"
-
-
-
-
-    >
+    android:weightSum="1">
 
 <RelativeLayout
 
