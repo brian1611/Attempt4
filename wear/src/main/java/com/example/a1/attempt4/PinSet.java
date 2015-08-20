@@ -74,7 +74,7 @@ public class PinSet extends Activity implements MessageApi.MessageListener, Goog
                 if(seek.getProgress()>0)
                 {d0Button.setBackgroundColor(getResources().getColor(R.color.green));}
                 else{
-                    d0Button.setBackgroundColor(getResources().getColor(R.color.grey));
+                    d0Button.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 }
             }
         });
@@ -87,7 +87,7 @@ public class PinSet extends Activity implements MessageApi.MessageListener, Goog
                 if(seek.getProgress()>0)
                 {a0Button.setBackgroundColor(getResources().getColor(R.color.green));}
                 else{
-                    a0Button.setBackgroundColor(getResources().getColor(R.color.grey));
+                    a0Button.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 }
             }
         });
@@ -100,7 +100,7 @@ public class PinSet extends Activity implements MessageApi.MessageListener, Goog
                 if(seek.getProgress()>0)
                 {a1Button.setBackgroundColor(getResources().getColor(R.color.green));}
                 else{
-                    a1Button.setBackgroundColor(getResources().getColor(R.color.grey));
+                    a1Button.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 }
             }
         });
@@ -113,7 +113,7 @@ public class PinSet extends Activity implements MessageApi.MessageListener, Goog
                 if(seek.getProgress()>0)
                 {a4Button.setBackgroundColor(getResources().getColor(R.color.green));}
                 else{
-                    a4Button.setBackgroundColor(getResources().getColor(R.color.grey));
+                    a4Button.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 }
             }
         });
@@ -126,7 +126,7 @@ public class PinSet extends Activity implements MessageApi.MessageListener, Goog
                 if(seek.getProgress()>0)
                 {a5Button.setBackgroundColor(getResources().getColor(R.color.green));}
                 else{
-                    a5Button.setBackgroundColor(getResources().getColor(R.color.grey));
+                    a5Button.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 }
             }
         });
@@ -139,7 +139,7 @@ public class PinSet extends Activity implements MessageApi.MessageListener, Goog
                 if(seek.getProgress()>0)
                 {a6Button.setBackgroundColor(getResources().getColor(R.color.green));}
                 else{
-                    a6Button.setBackgroundColor(getResources().getColor(R.color.grey));
+                    a6Button.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 }
             }
         });
@@ -152,7 +152,7 @@ public class PinSet extends Activity implements MessageApi.MessageListener, Goog
                 if(seek.getProgress()>0)
                 {a7Button.setBackgroundColor(getResources().getColor(R.color.green));}
                 else{
-                    a7Button.setBackgroundColor(getResources().getColor(R.color.grey));
+                    a7Button.setBackgroundColor(getResources().getColor(R.color.light_grey));
                 }
             }
         });
