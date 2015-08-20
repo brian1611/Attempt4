@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="function"
-        android:background="@color/dark_blue"
+
         android:id="@+id/connect"
         android:layout_below="@id/imageView"
         android:layout_toStartOf="@+id/switch1" />
@@ -55,7 +55,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Clear"
-        android:background="@color/dark_blue"
+
         android:id="@+id/button"
         android:layout_below="@+id/connect"
         android:layout_alignParentStart="true"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/seekBar"
         android:layout_below="@+id/spinner2"
-        android:background="@color/semitransparent_grey"
+
         android:max="255" />
 
     <Switch
